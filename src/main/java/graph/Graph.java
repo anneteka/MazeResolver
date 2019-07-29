@@ -1,4 +1,4 @@
-package processors;
+package graph;
 
 public class Graph {
 }
