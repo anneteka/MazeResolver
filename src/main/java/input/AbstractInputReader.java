@@ -1,4 +1,4 @@
 package input;
 
-public class AbstractInputReader {
+public abstract class AbstractInputReader {
 }
