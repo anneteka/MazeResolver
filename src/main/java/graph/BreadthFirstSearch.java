@@ -1,6 +1,7 @@
 package graph;
 
 import java.util.LinkedList;
+import java.util.Stack;
 
 public class BreadthFirstSearch {
     //calculates the shortest possible path
@@ -41,5 +42,20 @@ public class BreadthFirstSearch {
                 }
             }
         }
+    }
+
+    public Iterable<Integer> pathTo(int v) {
+
+        if (!hasPathTo(v)) return null;
+        Stack<Integer> path = new Stack<Integer>();
+        int x;
+        for (x = v; distTo[x] != 0; x = edgeTo[x])
+            path.push(x);
+        path.push(x);
+        return path;
+    }
+
+    public boolean hasPathTo(int v) {
+        return marked[v];
     }
 }
