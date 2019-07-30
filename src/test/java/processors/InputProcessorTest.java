@@ -10,7 +10,7 @@ public class InputProcessorTest {
 
     @Test
     public void graphGenerationTest() {
-        InputReaderFile reader = new InputReaderFile("testFiles/maze1.txt");
+        InputReaderFile reader = new InputReaderFile("testFiles/maze2.txt");
         String data = reader.readMaze();
         System.out.println(InputProcessor.process(data));
     }

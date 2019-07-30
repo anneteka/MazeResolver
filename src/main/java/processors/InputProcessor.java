@@ -12,44 +12,53 @@ public class InputProcessor {
     //and has the structure as below
     //vertices_amount start_vertex finish_vertex vertex-vertex ... pairs of linked vertices
     public static String process(String data) {
-        String[] maze=data.split("\\|");
+        String[] maze = data.split("\\|");
         StringBuilder graph = new StringBuilder();
-        graph.append(maze[0].length()*maze.length);
-        int startVertex, finishVertex;
+        graph.append(maze[0].length() * maze.length);
+        graph.append(' ');
+        int startVertex = 0, finishVertex = 0;
         int current;
         for (int i = 0; i < maze.length; i++) {
             for (int j = 0; j < maze[0].length(); j++) {
-                current=i*maze.length+j;
-                if (current=='S'){
-                    startVertex=current;
-                }
-                if (current=='F'){
-                    finishVertex=current;
-                }
-                if (current=='.'){
-                    if (i>0&&maze[i-1].charAt(j)=='.') {
-                        graph.append(current);
-                        graph.append('-');
-                        graph.append(current-maze.length);
+                current = i * maze[i].length() + j;
+                if (maze[i].charAt(j) != '#') {
+                    if (maze[i].charAt(j) == 'S') {
+                        startVertex = current;
                     }
-                    if (i<maze.length-1&&maze[i+1].charAt(j)=='.') {
-                        graph.append(current);
-                        graph.append('-');
-                        graph.append(current+maze.length);
+                    if (maze[i].charAt(j) == 'F') {
+                        finishVertex = current;
                     }
-                    if (j>0&&maze[i].charAt(j-1)=='.') {
+
+                    if (i > 0 && maze[i - 1].charAt(j) != '#') {
                         graph.append(current);
                         graph.append('-');
-                        graph.append(current-1);
+                        graph.append(current - maze[i].length());
+                        graph.append(' ');
                     }
-                    if (j<maze[i].length()-1&&maze[i].charAt(j+1)=='.') {
+                    if (i < maze.length - 1 && maze[i + 1].charAt(j) != '#') {
                         graph.append(current);
                         graph.append('-');
-                        graph.append(current+1);
+                        graph.append(current + maze[i].length());
+                        graph.append(' ');
+                    }
+                    if (j > 0 && maze[i].charAt(j - 1) != '#') {
+                        graph.append(current);
+                        graph.append('-');
+                        graph.append(current - 1);
+                        graph.append(' ');
+                    }
+                    if (j < maze[i].length() - 1 && maze[i].charAt(j + 1) != '#') {
+                        graph.append(current);
+                        graph.append('-');
+                        graph.append(current + 1);
+                        graph.append(' ');
                     }
                 }
             }
         }
+        graph.append(startVertex);
+        graph.append(' ');
+        graph.append(finishVertex);
         return graph.toString();
     }
 }
