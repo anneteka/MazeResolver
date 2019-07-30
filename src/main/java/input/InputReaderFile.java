@@ -8,32 +8,36 @@ public class InputReaderFile extends AbstractInputReader {
     public InputReaderFile(String file) {
         try {
             reader = new BufferedReader(new FileReader(new File(file)));
-        }
-        catch (FileNotFoundException e){
+        } catch (FileNotFoundException e) {
             //todo
             e.printStackTrace();
         }
     }
 
-    String readMaze() {
+    public String readMaze() {
         StringBuilder sb = new StringBuilder();
-        String line="";
+        String line = "";
         try {
-            line=reader.readLine();
+            line = reader.readLine();
         } catch (IOException e) {
             //todo
         }
-        while (line!=null){
+        while (line != null) {
             sb.append(line);
             sb.append("|");
             try {
-                line=reader.readLine();
+                line = reader.readLine();
             } catch (IOException e) {
-                line="";
+                line = "";
                 e.printStackTrace();
             }
         }
-        sb.deleteCharAt(sb.length()-1);
+        sb.deleteCharAt(sb.length() - 1);
+        try {
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return sb.toString();
     }
 
