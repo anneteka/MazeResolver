@@ -11,6 +11,7 @@ public class InputReaderFile extends AbstractInputReader {
         }
         catch (FileNotFoundException e){
             //todo
+            e.printStackTrace();
         }
     }
 
