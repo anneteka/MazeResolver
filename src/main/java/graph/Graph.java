@@ -28,4 +28,23 @@ public class Graph {
     }
 
 
+    public int getVertices() {
+        return vertices;
+    }
+
+    public int getEdges() {
+        return edges;
+    }
+
+    public int getStartVertex() {
+        return startVertex;
+    }
+
+    public int getFinishVertex() {
+        return finishVertex;
+    }
+
+    public ArrayList<Integer>[] getAdj() {
+        return adj;
+    }
 }
