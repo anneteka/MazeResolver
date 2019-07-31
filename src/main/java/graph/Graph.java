@@ -8,11 +8,12 @@ public class Graph {
     private int vertices; //amount of vertices
     private int edges; //amount of edges
     private int startVertex, finishVertex;
+    private int height, width;
     private ArrayList<Integer>[] adj; //list of all adjacent vertices
 
     //data string contains all information about the graph
     //and has the structure as below
-    //vertices_amount edges_amount start_vertex finish_vertex vertex-vertex ... pairs of linked vertices
+    //vertices_amount vertex-vertex ... pairs of linked vertices height start_vertex finish_vertex
     public Graph(String data) {
         String[] graph = data.split(" ");
         vertices = Integer.parseInt(graph[0]);
@@ -22,7 +23,9 @@ public class Graph {
         }
         startVertex = Integer.parseInt(graph[graph.length - 2]);
         finishVertex = Integer.parseInt(graph[graph.length - 1]);
-        edges = graph.length - 3;
+        edges = graph.length - 5;
+        height = Integer.parseInt(graph[graph.length - 4]);
+        width = Integer.parseInt(graph[graph.length - 3]);
         String[] verticesPair;
         for (int i = 1; i < graph.length - 2; i++) {
             verticesPair = graph[i].split("-");
@@ -51,6 +54,14 @@ public class Graph {
         return adj;
     }
 
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -69,4 +80,5 @@ public class Graph {
         sb.append(finishVertex);
         return sb.toString();
     }
+
 }

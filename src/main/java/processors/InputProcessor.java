@@ -56,6 +56,10 @@ public class InputProcessor {
                 }
             }
         }
+        graph.append(maze.length);//height of the maze
+        graph.append(' ');
+        graph.append(maze[0].length());//width of the maze
+        graph.append(' ');
         graph.append(startVertex);
         graph.append(' ');
         graph.append(finishVertex);
