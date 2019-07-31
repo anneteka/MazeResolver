@@ -9,16 +9,17 @@ public class InputReaderConsole extends AbstractInputReader {
         scanner = new Scanner(System.in);
     }
 
-    public String readMaze() {
-        StringBuilder sb = new StringBuilder();
+    @Override
+    public String[] readMaze() {
+
         System.out.print("Enter the number of lines in the maze: ");
-        int lines = Integer.parseInt(scanner.nextLine());
+        int linesAmount = Integer.parseInt(scanner.nextLine());
+        String[] lines = new String[linesAmount];
         System.out.println("Enter the maze: ");
-        for (int i = 0; i < lines; i++) {
-            sb.append(scanner.nextLine());
-            sb.append("|");
+        for (int i = 0; i < linesAmount; i++) {
+            lines[i]=scanner.nextLine();
         }
-        sb.deleteCharAt(sb.length() - 1);
-        return sb.toString();
+        return lines;
     }
+
 }

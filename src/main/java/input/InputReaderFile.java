@@ -14,31 +14,10 @@ public class InputReaderFile extends AbstractInputReader {
         }
     }
 
-    public String readMaze() {
-        StringBuilder sb = new StringBuilder();
-        String line = "";
-        try {
-            line = reader.readLine();
-        } catch (IOException e) {
-            //todo
-        }
-        while (line != null) {
-            sb.append(line);
-            sb.append("|");
-            try {
-                line = reader.readLine();
-            } catch (IOException e) {
-                line = "";
-                e.printStackTrace();
-            }
-        }
-        sb.deleteCharAt(sb.length() - 1);
-        try {
-            reader.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return sb.toString();
+    @Override
+
+    public String[] readMaze() {
+        return reader.lines().toArray(String[]::new);
     }
 
 }
