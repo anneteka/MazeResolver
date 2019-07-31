@@ -3,7 +3,7 @@ package processors;
 import java.util.ArrayList;
 
 public class PathToString {
-    static String pathToString(ArrayList<Integer> path) {
+    public static String pathToString(ArrayList<Integer> path) {
 
         StringBuilder sb = new StringBuilder();
         if (path == null) {
@@ -16,9 +16,9 @@ public class PathToString {
                 else if (diff == -1)
                     sb.append("l, ");
                 else if (diff < -1)
-                    sb.append("u, ");
-                else
                     sb.append("d, ");
+                else
+                    sb.append("u, ");
 
             }
             sb.deleteCharAt(sb.length() - 2);
