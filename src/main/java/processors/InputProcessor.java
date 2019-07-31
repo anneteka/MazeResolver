@@ -25,7 +25,7 @@ public class InputProcessor {
                     if (maze[i].charAt(j) == 'S') {
                         startVertex = current;
                     }
-                    if (maze[i].charAt(j) == 'F') {
+                    if (maze[i].charAt(j) == 'X') {
                         finishVertex = current;
                     }
 
