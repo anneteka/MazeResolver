@@ -13,14 +13,14 @@ import java.io.InputStream;
 
 public class PathFinder {
 
-    public static String findPathConsole(){
+    public String findPathConsole(){
         return findPath(new InputReaderConsole(), System.in);
     }
-    public static String findPathFile(String file) throws FileNotFoundException {
+    public String findPathFile(String file) throws FileNotFoundException {
         return findPath(new InputReaderFile(), new FileInputStream(new File(file)));
     }
 
-    private static String findPath(AbstractInputReader reader, InputStream source){
+    private String findPath(AbstractInputReader reader, InputStream source){
         String[] mazeData = reader.readMaze(source);
         String processedMazeData = InputProcessor.process(mazeData);
         Graph maze = new Graph(processedMazeData);
