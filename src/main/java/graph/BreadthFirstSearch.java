@@ -29,7 +29,7 @@ public class BreadthFirstSearch {
             distTo[v] = INFINITY;
         distTo[startVertex] = 0;
         marked[startVertex] = true;
-        q.addFirst(startVertex);
+        q.addLast(startVertex);
 
         while (!q.isEmpty()) {
             int v = q.removeFirst();
@@ -38,20 +38,20 @@ public class BreadthFirstSearch {
                     edgeTo[w] = v;
                     distTo[w] = distTo[v] + 1;
                     marked[w] = true;
-                    q.addFirst(w);
+                    q.addLast(w);
                 }
             }
         }
     }
 
-    public Iterable<Integer> pathTo(int v) {
+    public LinkedList<Integer> pathTo(int v) {
 
         if (!hasPathTo(v)) return null;
-        Stack<Integer> path = new Stack<Integer>();
+        LinkedList<Integer> path = new LinkedList<Integer>();
         int x;
         for (x = v; distTo[x] != 0; x = edgeTo[x])
-            path.push(x);
-        path.push(x);
+            path.addFirst(x);
+        path.addFirst(x);
         return path;
     }
 
