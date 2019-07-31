@@ -14,23 +14,15 @@ public class Graph {
     //data string contains all information about the graph
     //and has the structure as below
     //vertices_amount vertex-vertex ... pairs of linked vertices height width start_vertex finish_vertex
-    public Graph(String data) {
-        String[] graph = data.split(" ");
-        vertices = Integer.parseInt(graph[0]);
-        adj = new ArrayList[vertices];
-        for (int i = 0; i < adj.length; i++) {
-            adj[i] = new ArrayList<Integer>();
-        }
-        startVertex = Integer.parseInt(graph[graph.length - 2]);
-        finishVertex = Integer.parseInt(graph[graph.length - 1]);
-        edges = graph.length - 5;
-        height = Integer.parseInt(graph[graph.length - 4]);
-        width = Integer.parseInt(graph[graph.length - 3]);
-        String[] verticesPair;
-        for (int i = 1; i < graph.length - 4; i++) {
-            verticesPair = graph[i].split("-");
-            adj[Integer.parseInt(verticesPair[0])].add(Integer.parseInt(verticesPair[1]));
-        }
+    public Graph(int verticesAmount, int height, int width, int edgesAmount,
+                 int startVertex, int finishVertex, ArrayList<Integer>[] adjacent) {
+        vertices = verticesAmount;
+        adj = adjacent;
+        this.startVertex = startVertex;
+        this.finishVertex = finishVertex;
+        edges = edgesAmount;
+        this.height = height;
+        this.width = width;
     }
 
 
