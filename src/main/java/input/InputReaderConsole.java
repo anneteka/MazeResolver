@@ -9,7 +9,7 @@ public class InputReaderConsole extends AbstractInputReader {
         scanner = new Scanner(System.in);
     }
 
-    String readMaze() {
+    public String readMaze() {
         StringBuilder sb = new StringBuilder();
         System.out.print("Enter the number of lines in the maze: ");
         int lines = Integer.parseInt(scanner.nextLine());

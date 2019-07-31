@@ -2,5 +2,5 @@ package input;
 
 public abstract class AbstractInputReader {
 
-    abstract String readMaze();
+    abstract public String readMaze();
 }
