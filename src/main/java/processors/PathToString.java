@@ -5,7 +5,7 @@ import graph.Graph;
 import java.util.ArrayList;
 
 public class PathToString {
-    public static String pathToString(Graph maze, ArrayList<Integer> path) {
+    public String pathToString(Graph maze, ArrayList<Integer> path) {
         StringBuilder sb = new StringBuilder();
         if (path == null) {
             sb.append("no path found");
