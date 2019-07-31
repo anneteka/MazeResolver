@@ -27,7 +27,7 @@ public class Graph {
         height = Integer.parseInt(graph[graph.length - 4]);
         width = Integer.parseInt(graph[graph.length - 3]);
         String[] verticesPair;
-        for (int i = 1; i < graph.length - 2; i++) {
+        for (int i = 1; i < graph.length - 4; i++) {
             verticesPair = graph[i].split("-");
             adj[Integer.parseInt(verticesPair[0])].add(Integer.parseInt(verticesPair[1]));
         }
