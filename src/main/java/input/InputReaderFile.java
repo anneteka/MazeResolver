@@ -5,19 +5,18 @@ import java.io.*;
 public class InputReaderFile extends AbstractInputReader {
     private BufferedReader reader;
 
-    public InputReaderFile(String file) {
-        try {
-            reader = new BufferedReader(new FileReader(new File(file)));
-        } catch (FileNotFoundException e) {
-            //todo
-            e.printStackTrace();
-        }
-    }
-
     @Override
 
-    public String[] readMaze() {
-        return reader.lines().toArray(String[]::new);
+    public String[] readMaze(InputStream source) {
+        reader = new BufferedReader(new InputStreamReader(source));
+        String[] lines = reader.lines().toArray(String[]::new);
+        try {
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+            //todo
+        }
+        return lines;
     }
 
 }
