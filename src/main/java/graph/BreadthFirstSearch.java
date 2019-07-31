@@ -15,12 +15,12 @@ public class BreadthFirstSearch {
     private int[] distTo;   //number of edges shortest s-v path
 
     //int source - start vertex in the maze
-    public BreadthFirstSearch(Graph g, int source) {
+    public BreadthFirstSearch(Graph g) {
         marked = new boolean[g.getVertices()];
         distTo = new int[g.getVertices()];
         edgeTo = new int[g.getVertices()];
         graph = g;
-        startVertex = source;
+        startVertex = g.getStartVertex();
         bfs();
     }
 
