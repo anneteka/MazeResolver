@@ -1,5 +1,6 @@
 package graph;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Stack;
 
@@ -44,7 +45,7 @@ public class BreadthFirstSearch {
         }
     }
 
-    public LinkedList<Integer> pathTo(int v) {
+    public ArrayList<Integer> pathTo(int v) {
 
         if (!hasPathTo(v)) return null;
         LinkedList<Integer> path = new LinkedList<Integer>();
@@ -52,7 +53,7 @@ public class BreadthFirstSearch {
         for (x = v; distTo[x] != 0; x = edgeTo[x])
             path.addFirst(x);
         path.addFirst(x);
-        return path;
+        return new ArrayList<Integer>(path);
     }
 
     public boolean hasPathTo(int v) {

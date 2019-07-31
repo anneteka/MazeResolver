@@ -22,7 +22,7 @@ public class BreadthFirstSearchTest {
         InputReaderFile reader = new InputReaderFile("testFiles/maze2.txt");
         Graph graph = new Graph(InputProcessor.process(reader.readMaze()));
         BreadthFirstSearch search = new BreadthFirstSearch(graph, graph.getStartVertex());
-        LinkedList<Integer> list = search.pathTo(graph.getFinishVertex());
+        ArrayList<Integer> list = search.pathTo(graph.getFinishVertex());
         System.out.println(list==null?"null":list.toString());
         System.out.println("done");
     }
