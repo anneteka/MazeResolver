@@ -18,7 +18,7 @@ public class InputProcessor {
         int startVertex = 0, finishVertex = 0;
         int current;
         for (int i = 0; i < maze.length; i++) {
-            for (int j = 0; j < maze[0].length(); j++) {
+            for (int j = 0; j < maze[i].length(); j++) {
                 current = i * maze[i].length() + j;
                 if (maze[i].charAt(j) != '#') {
                     if (maze[i].charAt(j) == 'S') {

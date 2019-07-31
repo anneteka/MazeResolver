@@ -13,7 +13,7 @@ public class Graph {
 
     //data string contains all information about the graph
     //and has the structure as below
-    //vertices_amount vertex-vertex ... pairs of linked vertices height start_vertex finish_vertex
+    //vertices_amount vertex-vertex ... pairs of linked vertices height width start_vertex finish_vertex
     public Graph(String data) {
         String[] graph = data.split(" ");
         vertices = Integer.parseInt(graph[0]);

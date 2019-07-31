@@ -4,13 +4,13 @@ import graph.Graph;
 
 import java.util.ArrayList;
 
-public class PathToString {
-    public String pathToString(Graph maze, ArrayList<Integer> path) {
+public class PathDescriptor {
+    public String describe(Graph maze, ArrayList<Integer> path) {
         StringBuilder sb = new StringBuilder();
         if (path == null) {
             sb.append("no path found");
         } else {
-            if (maze.getWidth()>1) {
+            if (maze.getWidth() > 1) {
                 for (int i = 0; i < path.size() - 1; i++) {
                     int diff = path.get(i) - path.get(i + 1);
                     if (diff == 1)
@@ -23,8 +23,7 @@ public class PathToString {
                         sb.append("u, ");
 
                 }
-            }
-            else {
+            } else {
                 for (int i = 0; i < path.size() - 1; i++) {
                     int diff = path.get(i) - path.get(i + 1);
                     if (diff == 1)
