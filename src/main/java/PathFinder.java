@@ -22,10 +22,12 @@ public class PathFinder {
 
     private String findPath(AbstractInputReader reader, InputStream source){
         String[] mazeData = reader.readMaze(source);
-        String processedMazeData = InputProcessor.process(mazeData);
+        InputProcessor processor = new InputProcessor();
+        String processedMazeData = processor.process(mazeData);
         Graph maze = new Graph(processedMazeData);
         BreadthFirstSearch bfs = new BreadthFirstSearch(maze);
-        String path = PathToString.pathToString(maze, bfs.pathTo(maze.getFinishVertex()));
+        PathToString pathToString = new PathToString();
+        String path = pathToString.pathToString(maze, bfs.pathTo(maze.getFinishVertex()));
         return path;
     }
 }
