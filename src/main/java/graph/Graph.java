@@ -2,16 +2,30 @@ package graph;
 
 import java.util.ArrayList;
 
+/**
+ * {@code Graph} contains information about the maze as a graph
+ */
 public class Graph {
-    //contains information about the maze as graph
 
+    /**
+     * contains the index numbers of the start and end vertices
+     */
     private int startVertex, finishVertex;
-    private int width;
-    private ArrayList<Integer>[] edges; //list of all adjacent vertices
 
-    //data string contains all information about the graph
-    //and has the structure as below
-    //vertices_amount vertex-vertex ... pairs of linked verticesAmount height width start_vertex finish_vertex
+    /**
+     * the width of the maze
+     */
+    private int width;
+
+    /**
+     * all adjacent vertices (edges)
+     */
+    private ArrayList<Integer>[] edges;
+
+    /**
+     * Constructs an object that contains information about the maze as a graph.
+     * @param maze is an array of {@link String} where each string represents maze line
+     */
     public Graph(String[] maze) {
         width = maze[0].length();
 
@@ -51,22 +65,37 @@ public class Graph {
     }
 
 
+    /**
+     * @return vertices amount
+     */
     public int getVerticesAmount() {
         return edges.length;
     }
 
+    /**
+     * @return start vertex
+     */
     public int getStartVertex() {
         return startVertex;
     }
 
+    /**
+     * @return end vertex
+     */
     public int getFinishVertex() {
         return finishVertex;
     }
 
+    /**
+     * @return all edges between vertices
+     */
     public ArrayList<Integer>[] getAdj() {
         return edges;
     }
 
+    /**
+     * @return the width of th graph
+     */
     public int getWidth() {
         return width;
     }

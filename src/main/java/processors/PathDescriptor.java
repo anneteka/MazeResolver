@@ -1,11 +1,19 @@
 package processors;
 
-import graph.Graph;
-
 import java.util.ArrayList;
 import java.util.Optional;
 
+/**
+ * Reformat the path found with {@link graph.BreadthFirstSearch} as the set of instructions.
+ */
 public class PathDescriptor {
+
+    /**
+     * Reformat the path found with {@link graph.BreadthFirstSearch} as the set of instructions.
+     * @param graphWidth if the width is 1, then only up and down moves are allowed
+     * @param pathOptional the path that should be reformatted
+     * @return the final set of steps needed for the maze to be solved
+     */
     public String describe(int graphWidth, Optional<ArrayList<Integer>> pathOptional) {
         var sb = new StringBuilder();
         if (!pathOptional.isPresent()) {

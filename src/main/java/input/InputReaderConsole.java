@@ -2,11 +2,18 @@ package input;
 
 import java.io.InputStream;
 import java.util.Scanner;
-
 import static java.lang.Integer.parseInt;
 
-public class InputReaderConsole extends AbstractInputReader {
+/**
+ * {@code InputReaderConsole} is an implementation of {@link InputReader} used to read the maze from the console.
+ */
+public class InputReaderConsole implements InputReader {
 
+    /**
+     * Reads maze from an {@link InputStream} that is System.in
+     * @param source {@link InputStream} that contains the maze as text data
+     * @return maze as a String[] where one String equals one actual line of the maze
+     */
     @Override
     public String[] readMaze(InputStream source) {
         try (var scanner = new Scanner(source)) {
