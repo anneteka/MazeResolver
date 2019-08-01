@@ -28,9 +28,8 @@ public class PathDescriptor {
                     int diff = path.get(i) - path.get(i + 1);
                     if (diff == 1)
                         sb.append("u, ");
-                    else if (diff == -1)
+                    else
                         sb.append("d, ");
-
                 }
             }
             sb.deleteCharAt(sb.length() - 2);

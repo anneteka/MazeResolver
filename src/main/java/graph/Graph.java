@@ -5,33 +5,54 @@ import java.util.ArrayList;
 public class Graph {
     //contains information about the maze as graph
 
-    private int vertices; //amount of vertices
-    private int edges; //amount of edges
     private int startVertex, finishVertex;
-    private int height, width;
-    private ArrayList<Integer>[] adj; //list of all adjacent vertices
+    private int width;
+    private ArrayList<Integer>[] edges; //list of all adjacent vertices
 
     //data string contains all information about the graph
     //and has the structure as below
-    //vertices_amount vertex-vertex ... pairs of linked vertices height width start_vertex finish_vertex
-    public Graph(int verticesAmount, int height, int width, int edgesAmount,
-                 int startVertex, int finishVertex, ArrayList<Integer>[] adjacent) {
-        vertices = verticesAmount;
-        adj = adjacent;
-        this.startVertex = startVertex;
-        this.finishVertex = finishVertex;
-        edges = edgesAmount;
-        this.height = height;
-        this.width = width;
+    //vertices_amount vertex-vertex ... pairs of linked verticesAmount height width start_vertex finish_vertex
+    public Graph(String[] maze) {
+        width = maze[0].length();
+
+        startVertex = 0;
+        finishVertex = 0;
+        edges = new ArrayList[maze.length * width];
+        for (int i = 0; i < edges.length; i++) {
+            edges[i] = new ArrayList<>();
+        }
+        int current;
+        for (int i = 0; i < maze.length; i++) {
+            for (int j = 0; j < maze[i].length(); j++) {
+                current = i * maze[i].length() + j;
+                if (maze[i].charAt(j) != '#') {
+                    if (maze[i].charAt(j) == 'S') {
+                        startVertex = current;
+                    }
+                    if (maze[i].charAt(j) == 'X') {
+                        finishVertex = current;
+                    }
+
+                    if (i > 0 && maze[i - 1].charAt(j) != '#') {
+                        edges[current].add(current - maze[i].length());
+                    }
+                    if (i < maze.length - 1 && maze[i + 1].charAt(j) != '#') {
+                        edges[current].add(current + maze[i].length());
+                    }
+                    if (j > 0 && maze[i].charAt(j - 1) != '#') {
+                        edges[current].add(current - 1);
+                    }
+                    if (j < maze[i].length() - 1 && maze[i].charAt(j + 1) != '#') {
+                        edges[current].add(current + 1);
+                    }
+                }
+            }
+        }
     }
 
 
-    public int getVertices() {
-        return vertices;
-    }
-
-    public int getEdges() {
-        return edges;
+    public int getVerticesAmount() {
+        return edges.length;
     }
 
     public int getStartVertex() {
@@ -43,34 +64,17 @@ public class Graph {
     }
 
     public ArrayList<Integer>[] getAdj() {
-        return adj;
+        return edges;
     }
 
     public int getWidth() {
         return width;
     }
 
-    public int getHeight() {
-        return height;
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(vertices);
-        sb.append(' ');
-        for (int i = 0; i < adj.length; i++) {
-            for (int vertex : adj[i]) {
-                sb.append(i);
-                sb.append('-');
-                sb.append(vertices);
-                sb.append(' ');
-            }
-        }
-        sb.append(startVertex);
-        sb.append(' ');
-        sb.append(finishVertex);
-        return sb.toString();
-    }
+//    @Override
+//    public String toString() {
+//        //todo
+//        return null;
+//    }
 
 }

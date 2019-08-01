@@ -2,7 +2,6 @@ package graph;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.Stack;
 
 public class BreadthFirstSearch {
     //calculates the shortest possible path
@@ -16,17 +15,17 @@ public class BreadthFirstSearch {
 
     //int source - start vertex in the maze
     public BreadthFirstSearch(Graph g) {
-        marked = new boolean[g.getVertices()];
-        distTo = new int[g.getVertices()];
-        edgeTo = new int[g.getVertices()];
+        marked = new boolean[g.getVerticesAmount()];
+        distTo = new int[g.getVerticesAmount()];
+        edgeTo = new int[g.getVerticesAmount()];
         graph = g;
         startVertex = g.getStartVertex();
         bfs();
     }
 
     private void bfs() {
-        LinkedList<Integer> q = new LinkedList<Integer>();
-        for (int v = 0; v < graph.getVertices(); v++)
+        LinkedList<Integer> q = new LinkedList<>();
+        for (int v = 0; v < graph.getVerticesAmount(); v++)
             distTo[v] = INFINITY;
         distTo[startVertex] = 0;
         marked[startVertex] = true;
@@ -46,7 +45,6 @@ public class BreadthFirstSearch {
     }
 
     public ArrayList<Integer> pathTo(int v) {
-
         if (!hasPathTo(v)) return null;
         LinkedList<Integer> path = new LinkedList<>();
         int x;
