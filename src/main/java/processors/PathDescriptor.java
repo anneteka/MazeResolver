@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class PathDescriptor {
     public String describe(Graph maze, ArrayList<Integer> path) {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         if (path == null) {
             sb.append("no path found");
         } else {

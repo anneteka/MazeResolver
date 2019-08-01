@@ -47,10 +47,9 @@ public class BreadthFirstSearch {
     public ArrayList<Integer> pathTo(int v) {
         if (!hasPathTo(v)) return null;
         LinkedList<Integer> path = new LinkedList<>();
-        int x;
-        for (x = v; distTo[x] != 0; x = edgeTo[x])
+        for (int x = v; distTo[x] != 0; x = edgeTo[x])
             path.addFirst(x);
-        path.addFirst(x);
+        path.addFirst(startVertex);
         return new ArrayList<>(path);
     }
 
