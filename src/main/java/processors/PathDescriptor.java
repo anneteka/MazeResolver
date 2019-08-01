@@ -3,14 +3,16 @@ package processors;
 import graph.Graph;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class PathDescriptor {
-    public String describe(Graph maze, ArrayList<Integer> path) {
+    public String describe(int graphWidth, Optional<ArrayList<Integer>> pathOptional) {
         var sb = new StringBuilder();
-        if (path == null) {
+        if (!pathOptional.isPresent()) {
             sb.append("no path found");
         } else {
-            if (maze.getWidth() > 1) {
+            ArrayList<Integer> path = pathOptional.get();
+            if (graphWidth > 1) {
                 for (int i = 0; i < path.size() - 1; i++) {
                     int diff = path.get(i) - path.get(i + 1);
                     if (diff == 1)

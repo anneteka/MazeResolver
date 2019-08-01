@@ -22,6 +22,6 @@ public class PathFinder {
         var maze = new Graph(mazeData);
         var bfs = new BreadthFirstSearch(maze);
         var pathDescriptor = new PathDescriptor();
-        return pathDescriptor.describe(maze, bfs.pathTo(maze.getFinishVertex()));
+        return pathDescriptor.describe(maze.getWidth(), bfs.pathTo(maze.getFinishVertex()));
     }
 }

@@ -71,10 +71,4 @@ public class Graph {
         return width;
     }
 
-//    @Override
-//    public String toString() {
-//        //todo
-//        return null;
-//    }
-
 }

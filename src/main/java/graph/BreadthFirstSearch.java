@@ -2,6 +2,7 @@ package graph;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.Optional;
 
 public class BreadthFirstSearch {
     //calculates the shortest possible path
@@ -44,16 +45,16 @@ public class BreadthFirstSearch {
         }
     }
 
-    public ArrayList<Integer> pathTo(int v) {
-        if (!hasPathTo(v)) return null;
+    public Optional<ArrayList<Integer>> pathTo(int v) {
+        if (!hasPathTo(v)) return Optional.empty();
         LinkedList<Integer> path = new LinkedList<>();
         for (int x = v; distTo[x] != 0; x = edgeTo[x])
             path.addFirst(x);
         path.addFirst(startVertex);
-        return new ArrayList<>(path);
+        return Optional.of(new ArrayList<>(path));
     }
 
-    public boolean hasPathTo(int v) {
+    private boolean hasPathTo(int v) {
         return marked[v];
     }
 }
